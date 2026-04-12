@@ -1,14 +1,13 @@
 from collections import defaultdict
-import numpy as pd
+import numpy as np
+
 
 class MarkovText(object):
-
     def __init__(self, corpus):
         self.corpus = corpus
-        self.term_dict = None 
+        self.term_dict = None
 
     def get_term_dict(self):
-
         terms = self.corpus.split()
         term_dict = defaultdict(list)
 
@@ -18,11 +17,9 @@ class MarkovText(object):
             term_dict[current_term].append(next_term)
 
         self.term_dict = term_dict
-
-        return None
+        return term_dict
 
     def generate(self, seed_term=None, term_count=15):
-
         if self.term_dict is None:
             self.get_term_dict()
 
